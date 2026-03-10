@@ -1,0 +1,38 @@
+{
+  "name": "@probability-nz/types",
+  "version": "0.1.0",
+  "description": "Shared types for probability.nz plugins",
+  "keywords": [
+    "plugin",
+    "probability",
+    "types"
+  ],
+  "license": "AGPL-3.0-only",
+  "author": "Garbo Succus",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/probability-nz/sdk",
+    "directory": "packages/types"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "oxlint -c ../../.oxlintrc.json && tsc --noEmit"
+  },
+  "devDependencies": {
+    "@automerge/automerge": "^3",
+    "@types/three": "^0.183.1",
+    "typescript": "^5.9.3"
+  }
+}

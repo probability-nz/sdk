@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "packageManager": "pnpm@10.24.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "test:e2e": "playwright test",
+    "fmt": "oxfmt --write packages/ plugins/",
+    "fmt:check": "oxfmt --check packages/ plugins/",
+    "clean": "rm -rf packages/*/dist plugins/*/dist node_modules/.cache .turbo"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "oxfmt": "^0.38.0",
+    "oxlint": "^1.43.0",
+    "oxlint-tsgolint": "^0.16.0",
+    "tsx": "^4.21.0",
+    "turbo": "^2.8.3"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "simple-plugin",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "oxlint -c ../../.oxlintrc.json && tsc --noEmit"
+  },
+  "dependencies": {
+    "@automerge/automerge": "^3.2.3",
+    "@automerge/react": "2.5.3",
+    "@probability-nz/plugins": "workspace:*",
+    "@probability-nz/types": "workspace:*",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.13",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^5.9.3",
+    "vite": "^6.3.5",
+    "vite-plugin-wasm": "^3.4.1"
+  }
+}

@@ -1,0 +1,618 @@
+{
+  "$schema": "https://probability.nz/schemas/game-manifest/1.0",
+  "templates": {
+    "tile": {
+      "src": "assets/tile.glb"
+    },
+    "white-piece": {
+      "src": "assets/piece.glb",
+      "color": "white"
+    },
+    "red-piece": {
+      "src": "assets/piece.glb",
+      "color": "#cc3333"
+    }
+  },
+  "scenarios": [
+    {
+      "name": "Ready",
+      "children": [
+        {
+          "name": "a1",
+          "template": "tile",
+          "position": [
+            -0.104,
+            0,
+            -0.104
+          ],
+          "color": "#e8d4a2",
+          "locked": true
+        },
+        {
+          "name": "b1",
+          "template": "tile",
+          "position": [
+            -0.052,
+            0,
+            -0.104
+          ],
+          "color": "#b58863",
+          "locked": true
+        },
+        {
+          "name": "c1",
+          "template": "tile",
+          "position": [
+            0,
+            0,
+            -0.104
+          ],
+          "color": "#e8d4a2",
+          "locked": true
+        },
+        {
+          "name": "d1",
+          "template": "tile",
+          "position": [
+            0.052000000000000005,
+            0,
+            -0.104
+          ],
+          "color": "#b58863",
+          "locked": true
+        },
+        {
+          "name": "e1",
+          "template": "tile",
+          "position": [
+            0.104,
+            0,
+            -0.104
+          ],
+          "color": "#e8d4a2",
+          "locked": true
+        },
+        {
+          "name": "a2",
+          "template": "tile",
+          "position": [
+            -0.104,
+            0,
+            -0.052
+          ],
+          "color": "#b58863",
+          "locked": true
+        },
+        {
+          "name": "b2",
+          "template": "tile",
+          "position": [
+            -0.052,
+            0,
+            -0.052
+          ],
+          "color": "#e8d4a2",
+          "locked": true
+        },
+        {
+          "name": "c2",
+          "template": "tile",
+          "position": [
+            0,
+            0,
+            -0.052
+          ],
+          "color": "#b58863",
+          "locked": true
+        },
+        {
+          "name": "d2",
+          "template": "tile",
+          "position": [
+            0.052000000000000005,
+            0,
+            -0.052
+          ],
+          "color": "#e8d4a2",
+          "locked": true
+        },
+        {
+          "name": "e2",
+          "template": "tile",
+          "position": [
+            0.104,
+            0,
+            -0.052
+          ],
+          "color": "#b58863",
+          "locked": true
+        },
+        {
+          "name": "a3",
+          "template": "tile",
+          "position": [
+            -0.104,
+            0,
+            0
+          ],
+          "color": "#e8d4a2",
+          "locked": true
+        },
+        {
+          "name": "b3",
+          "template": "tile",
+          "position": [
+            -0.052,
+            0,
+            0
+          ],
+          "color": "#b58863",
+          "locked": true
+        },
+        {
+          "name": "c3",
+          "template": "tile",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "color": "#e8d4a2",
+          "locked": true
+        },
+        {
+          "name": "d3",
+          "template": "tile",
+          "position": [
+            0.052000000000000005,
+            0,
+            0
+          ],
+          "color": "#b58863",
+          "locked": true
+        },
+        {
+          "name": "e3",
+          "template": "tile",
+          "position": [
+            0.104,
+            0,
+            0
+          ],
+          "color": "#e8d4a2",
+          "locked": true
+        },
+        {
+          "name": "a4",
+          "template": "tile",
+          "position": [
+            -0.104,
+            0,
+            0.052000000000000005
+          ],
+          "color": "#b58863",
+          "locked": true
+        },
+        {
+          "name": "b4",
+          "template": "tile",
+          "position": [
+            -0.052,
+            0,
+            0.052000000000000005
+          ],
+          "color": "#e8d4a2",
+          "locked": true
+        },
+        {
+          "name": "c4",
+          "template": "tile",
+          "position": [
+            0,
+            0,
+            0.052000000000000005
+          ],
+          "color": "#b58863",
+          "locked": true
+        },
+        {
+          "name": "d4",
+          "template": "tile",
+          "position": [
+            0.052000000000000005,
+            0,
+            0.052000000000000005
+          ],
+          "color": "#e8d4a2",
+          "locked": true
+        },
+        {
+          "name": "e4",
+          "template": "tile",
+          "position": [
+            0.104,
+            0,
+            0.052000000000000005
+          ],
+          "color": "#b58863",
+          "locked": true
+        },
+        {
+          "name": "a5",
+          "template": "tile",
+          "position": [
+            -0.104,
+            0,
+            0.104
+          ],
+          "color": "#e8d4a2",
+          "locked": true
+        },
+        {
+          "name": "b5",
+          "template": "tile",
+          "position": [
+            -0.052,
+            0,
+            0.104
+          ],
+          "color": "#b58863",
+          "locked": true
+        },
+        {
+          "name": "c5",
+          "template": "tile",
+          "position": [
+            0,
+            0,
+            0.104
+          ],
+          "color": "#e8d4a2",
+          "locked": true
+        },
+        {
+          "name": "d5",
+          "template": "tile",
+          "position": [
+            0.052000000000000005,
+            0,
+            0.104
+          ],
+          "color": "#b58863",
+          "locked": true
+        },
+        {
+          "name": "e5",
+          "template": "tile",
+          "position": [
+            0.104,
+            0,
+            0.104
+          ],
+          "color": "#e8d4a2",
+          "locked": true
+        },
+        {
+          "template": "white-piece",
+          "position": [
+            -0.16,
+            0.006,
+            -0.064
+          ]
+        },
+        {
+          "template": "white-piece",
+          "position": [
+            -0.192,
+            0.006,
+            -0.064
+          ]
+        },
+        {
+          "template": "white-piece",
+          "position": [
+            -0.224,
+            0.006,
+            -0.064
+          ]
+        },
+        {
+          "template": "white-piece",
+          "position": [
+            -0.256,
+            0.006,
+            -0.064
+          ]
+        },
+        {
+          "template": "white-piece",
+          "position": [
+            -0.16,
+            0.006,
+            -0.032
+          ]
+        },
+        {
+          "template": "white-piece",
+          "position": [
+            -0.192,
+            0.006,
+            -0.032
+          ]
+        },
+        {
+          "template": "white-piece",
+          "position": [
+            -0.224,
+            0.006,
+            -0.032
+          ]
+        },
+        {
+          "template": "white-piece",
+          "position": [
+            -0.256,
+            0.006,
+            -0.032
+          ]
+        },
+        {
+          "template": "white-piece",
+          "position": [
+            -0.16,
+            0.006,
+            0
+          ]
+        },
+        {
+          "template": "white-piece",
+          "position": [
+            -0.192,
+            0.006,
+            0
+          ]
+        },
+        {
+          "template": "white-piece",
+          "position": [
+            -0.224,
+            0.006,
+            0
+          ]
+        },
+        {
+          "template": "white-piece",
+          "position": [
+            -0.256,
+            0.006,
+            0
+          ]
+        },
+        {
+          "template": "white-piece",
+          "position": [
+            -0.16,
+            0.006,
+            0.032
+          ]
+        },
+        {
+          "template": "white-piece",
+          "position": [
+            -0.192,
+            0.006,
+            0.032
+          ]
+        },
+        {
+          "template": "white-piece",
+          "position": [
+            -0.224,
+            0.006,
+            0.032
+          ]
+        },
+        {
+          "template": "white-piece",
+          "position": [
+            -0.256,
+            0.006,
+            0.032
+          ]
+        },
+        {
+          "template": "white-piece",
+          "position": [
+            -0.16,
+            0.006,
+            0.064
+          ]
+        },
+        {
+          "template": "white-piece",
+          "position": [
+            -0.192,
+            0.006,
+            0.064
+          ]
+        },
+        {
+          "template": "white-piece",
+          "position": [
+            -0.224,
+            0.006,
+            0.064
+          ]
+        },
+        {
+          "template": "white-piece",
+          "position": [
+            -0.256,
+            0.006,
+            0.064
+          ]
+        },
+        {
+          "template": "red-piece",
+          "position": [
+            0.16,
+            0.006,
+            -0.064
+          ]
+        },
+        {
+          "template": "red-piece",
+          "position": [
+            0.192,
+            0.006,
+            -0.064
+          ]
+        },
+        {
+          "template": "red-piece",
+          "position": [
+            0.224,
+            0.006,
+            -0.064
+          ]
+        },
+        {
+          "template": "red-piece",
+          "position": [
+            0.256,
+            0.006,
+            -0.064
+          ]
+        },
+        {
+          "template": "red-piece",
+          "position": [
+            0.16,
+            0.006,
+            -0.032
+          ]
+        },
+        {
+          "template": "red-piece",
+          "position": [
+            0.192,
+            0.006,
+            -0.032
+          ]
+        },
+        {
+          "template": "red-piece",
+          "position": [
+            0.224,
+            0.006,
+            -0.032
+          ]
+        },
+        {
+          "template": "red-piece",
+          "position": [
+            0.256,
+            0.006,
+            -0.032
+          ]
+        },
+        {
+          "template": "red-piece",
+          "position": [
+            0.16,
+            0.006,
+            0
+          ]
+        },
+        {
+          "template": "red-piece",
+          "position": [
+            0.192,
+            0.006,
+            0
+          ]
+        },
+        {
+          "template": "red-piece",
+          "position": [
+            0.224,
+            0.006,
+            0
+          ]
+        },
+        {
+          "template": "red-piece",
+          "position": [
+            0.256,
+            0.006,
+            0
+          ]
+        },
+        {
+          "template": "red-piece",
+          "position": [
+            0.16,
+            0.006,
+            0.032
+          ]
+        },
+        {
+          "template": "red-piece",
+          "position": [
+            0.192,
+            0.006,
+            0.032
+          ]
+        },
+        {
+          "template": "red-piece",
+          "position": [
+            0.224,
+            0.006,
+            0.032
+          ]
+        },
+        {
+          "template": "red-piece",
+          "position": [
+            0.256,
+            0.006,
+            0.032
+          ]
+        },
+        {
+          "template": "red-piece",
+          "position": [
+            0.16,
+            0.006,
+            0.064
+          ]
+        },
+        {
+          "template": "red-piece",
+          "position": [
+            0.192,
+            0.006,
+            0.064
+          ]
+        },
+        {
+          "template": "red-piece",
+          "position": [
+            0.224,
+            0.006,
+            0.064
+          ]
+        },
+        {
+          "template": "red-piece",
+          "position": [
+            0.256,
+            0.006,
+            0.064
+          ]
+        }
+      ]
+    }
+  ]
+}

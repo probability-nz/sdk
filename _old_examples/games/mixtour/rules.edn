@@ -1,0 +1,70 @@
+(game "Mixtour"
+  (players 2)
+  (mode Alternating)
+
+  (equipment
+    (board (square 5))
+    (piece "Stone" Each
+      (numEach 20)))
+
+  (rules
+    (start (set Score Each 0))
+
+    (play
+      (or
+        ;; Place a new piece on any empty space
+        (if (> (count Pieces Mover in:(sites Hand Mover)) 0)
+          (move Add
+            (piece (id "Stone" Mover))
+            (to (sites Empty))))
+
+        ;; Move top N pieces from any stack onto another stack
+        (forEach Site (sites Occupied)
+          (do
+            (forEach Value
+              (min 1)
+              (max (size Stack at:(site)))
+              (move
+                (from (site) count:(value))
+                (to
+                  (forEach Site (sites Board)
+                    if:(and
+                      (is Occupied (to))
+                      (!= (to) (site))
+                      ;; Distance must equal destination stack height
+                      (= (count Steps (from) (to))
+                         (size Stack at:(to)))
+                      ;; Must be in a straight line (orthogonal or diagonal)
+                      (is In (to)
+                        (sites Direction from:(site) All))
+                      ;; Path must be clear
+                      (all Sites
+                        (sites Between (from) (to))
+                        (is Empty (site)))))
+                stack:True)
+              (then
+                ;; Stack >= 5: remove and score for top piece owner
+                (if (>= (size Stack at:(last To)) 5)
+                  (seq
+                    (addScore
+                      (who at:(last To)
+                        level:(topLevel (last To)))
+                      1)
+                    (remove (last To))))))))
+
+        ;; Pass if no other moves available
+        (move Pass)))
+
+    (end
+      (or
+        ;; First to score wins
+        (if (> (score Mover) 0)
+          (result Mover Win))
+        ;; Both pass = draw
+        (if (all Passed)
+          (result Mover Draw))))
+
+    ;; (no Repeat) is stricter than the actual rule ("can't undo
+    ;; opponent's last move only") but never permits an illegal
+    ;; move — it may block some legal ones in rare cases.
+    (meta (no Repeat))))

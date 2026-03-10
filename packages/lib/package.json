@@ -1,0 +1,44 @@
+{
+  "name": "@probability-nz/lib",
+  "version": "0.1.0",
+  "description": "Core utilities for probability.nz plugins (no React dependency)",
+  "keywords": [
+    "plugin",
+    "probability",
+    "utilities"
+  ],
+  "license": "AGPL-3.0-only",
+  "author": "Garbo Succus",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/probability-nz/sdk",
+    "directory": "packages/lib"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts",
+    "lint": "oxlint -c ../../.oxlintrc.json && tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@automerge/automerge": "^3",
+    "@probability-nz/types": "workspace:*"
+  },
+  "devDependencies": {
+    "jsdom": "^28.0.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  }
+}

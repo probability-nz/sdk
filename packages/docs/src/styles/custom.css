@@ -1,0 +1,50 @@
+:root {
+    --sl-font: monospace;
+    --sl-color-bg: #111;
+    --sl-color-black: #111;
+    --sl-color-text: #ccc;
+}
+
+:root[data-theme="light"] {
+    --sl-color-bg: #fff;
+    --sl-color-black: #fff;
+    --sl-color-text: #222;
+}
+
+* {
+    font-size: 1rem;
+    border-radius: 0 !important;
+}
+
+pre,
+code,
+blockquote,
+details,
+table,
+th,
+td,
+hr,
+input,
+select,
+textarea,
+button,
+.social-icons::after,
+.card,
+.pagination-links,
+.expressive-code {
+    border-width: 2px !important;
+}
+
+a {
+    text-decoration-thickness: 2px !important;
+}
+
+/* Hide Starlight's auto page title (README provides its own) */
+h1#_top {
+    display: none;
+}
+
+/* Hide "Overview" TOC entry that links to hidden title */
+a[href="#_top"] {
+    display: none;
+}

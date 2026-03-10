@@ -1,0 +1,4 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": ["api-entry.ts", "types-entry.ts", "../plugins/src"]
+}

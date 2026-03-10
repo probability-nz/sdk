@@ -1,0 +1,17 @@
+node_modules
+dist
+*.log
+.turbo
+.env
+.env.*
+!.env.example
+.DS_Store
+*.sw?
+test-results/
+*.tsbuildinfo
+coverage/
+packages/docs/src/content/docs/plugins/
+packages/docs/src/content/docs/types/
+packages/docs/dist/
+packages/docs/.astro/
+.claude/

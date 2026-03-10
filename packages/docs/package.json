@@ -1,0 +1,17 @@
+{
+  "name": "@probability-nz/docs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "docs": "astro build",
+    "dev": "astro dev"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.38.0",
+    "astro": "^6.0.2",
+    "starlight-theme-flexoki": "^0.2.2",
+    "starlight-typedoc": "^0.21.5",
+    "typedoc": "^0.28.17",
+    "typedoc-plugin-markdown": "^4.10.0"
+  }
+}

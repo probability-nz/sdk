@@ -1,0 +1,52 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "options": {
+    "typeAware": true
+  },
+  "plugins": ["react", "promise", "typescript", "jsdoc"],
+  "overrides": [
+    {
+      "files": ["*.test.ts", "*.test.tsx", "**/*.test.ts", "**/*.test.tsx"],
+      "rules": {
+        "promise/prefer-await-to-then": "off",
+        "typescript/no-unsafe-argument": "off",
+        "typescript/consistent-type-imports": "off",
+        "typescript/no-unsafe-type-assertion": "off"
+      }
+    }
+  ],
+  "categories": {
+    "correctness": "error",
+    "pedantic": "warn",
+    "perf": "warn",
+    "style": "warn",
+    "suspicious": "error"
+  },
+  "rules": {
+    "id-length": "off",
+    "func-style": "off",
+    "no-magic-numbers": "off",
+    "no-ternary": "off",
+    "sort-keys": "off",
+    "max-lines": "off",
+    "max-lines-per-function": "off",
+    "max-params": "off",
+    "max-statements": "off",
+    "new-cap": ["warn", { "capIsNewExceptions": ["DELETE","GET","HEAD","OPTIONS","PATCH","POST","PUT"] }],
+    "sort-imports": ["warn", { "ignoreDeclarationSort": true }],
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-max-depth": "off",
+    "typescript/no-unsafe-type-assertion": "warn",
+    "no-param-reassign": "error",
+    "no-var": "error",
+    "typescript/prefer-readonly": "warn",
+    "jsdoc/check-access": "warn",
+    "jsdoc/check-tag-names": "off",
+    "jsdoc/empty-tags": "off",
+    "jsdoc/require-param": "off",
+    "jsdoc/require-param-type": "off",
+    "jsdoc/require-returns": "off",
+    "jsdoc/require-returns-type": "off"
+  }
+}
