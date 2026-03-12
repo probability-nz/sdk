@@ -5,10 +5,8 @@
  */
 
 import typia from "typia";
-import type { GameManifest, GameState } from "../src/doc";
-import type { PresenceState } from "../src/presence";
+import type { GameManifest, GameState, PresenceState } from "@probability-nz/types";
 
-export const openapi = typia.json.schemas<
-  [GameManifest, GameState, PresenceState],
-  "3.1"
+export const typiaOutput = typia.json.schemas<
+  [GameManifest, GameState, PresenceState]
 >();

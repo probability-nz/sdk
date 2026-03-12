@@ -1,4 +1,4 @@
-export const SCHEMA_VERSION = "https://probability.nz/schemas/analog/v0";
+export const SCHEMA_VERSION = "https://registry.probability.nz/npm/@probability-nz/analog/-/analog-0.1.0.tgz/dist/analog.json";
 
 /**
  * `[x, y, z]` — right-handed Y-up coordinate system (from Three.js).

@@ -1,7 +1,0 @@
-{
-  "extends": "../tsconfig.schema.json",
-  "compilerOptions": {
-    "types": ["node"]
-  },
-  "include": ["."]
-}

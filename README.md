@@ -5,7 +5,7 @@
 ## TODO
 
 - [ ] Ignore invalid peer presence updates, and log dev warning.
-- [ ] Upload the schema to https://probability.nz/schemas/analog/v0.
+- [ ] Upload the schema to https://registry.probability.nz/npm/@probability-nz/analog/-/analog-0.1.0.tgz/dist/analog.json.
 
 ---
 
@@ -22,7 +22,7 @@ Pieces are stacked on each other, and positioned relatively.
 ```jsonc
 // A token, sitting on a card, sitting on a chessboard
 {
-  "$schema": "https://probability.nz/schemas/analog/v0",
+  "$schema": "https://registry.probability.nz/npm/@probability-nz/analog/-/analog-0.1.0.tgz/dist/analog.json",
   "templates": {},
   "children": {
     "name": "Chess Board",
@@ -74,7 +74,7 @@ Templates are a way to define reusable pieces of configuration. They can inherit
 
 ```jsonc
 {
-  "$schema": "https://probability.nz/schemas/analog/v0",
+  "$schema": "https://registry.probability.nz/npm/@probability-nz/analog/-/analog-0.1.0.tgz/dist/analog.json",
   "templates": {
     "defaults": {
       "scale": [0.1, 0.1, 0.1],
@@ -98,7 +98,7 @@ The manifest file is similar to a game state, with a `states` array on the root,
 ```jsonc
 // 2-4 and 4-8 player scenarios
 {
-  "$schema": "https://probability.nz/schemas/analog/v0",
+  "$schema": "https://registry.probability.nz/npm/@probability-nz/analog/-/analog-0.1.0.tgz/dist/analog.json",
   "templates": {
     "token": { "src": "token.glb" }
   },

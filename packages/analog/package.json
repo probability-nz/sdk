@@ -1,0 +1,43 @@
+{
+  "name": "@probability-nz/analog",
+  "version": "0.1.0",
+  "description": "JSON schema for probability.nz Automerge documents",
+  "keywords": [
+    "analog",
+    "probability",
+    "schema"
+  ],
+  "license": "AGPL-3.0-only",
+  "author": "Garbo Succus",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/probability-nz/sdk",
+    "directory": "packages/analog"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    "./analog.json": "./dist/analog.json"
+  },
+  "scripts": {
+    "build": "typia generate --input src --output dist/.generated --project tsconfig.schema.json && tsx dist/.generated/generate-schema.ts",
+    "lint": "oxlint -c ../../.oxlintrc.json && tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@probability-nz/types": "workspace:*"
+  },
+  "devDependencies": {
+    "@automerge/automerge": "^3",
+    "@types/node": "^25.4.0",
+    "@typia/unplugin": "12.0.0-dev.20260312-3",
+    "ajv": "^8",
+    "typescript": "^5.9.3",
+    "tsx": "^4",
+    "typia": "12.0.0-dev.20260312-3",
+    "vitest": "^4"
+  }
+}

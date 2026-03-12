@@ -5,7 +5,7 @@ const PLUGIN_URL = "https://registry.example.com/plugins/chess/";
 
 const mockPackageJson = { main: "./dist/manifest.json" };
 const mockManifest = {
-  $schema: "https://probability.nz/schemas/analog/v0",
+  $schema: "https://registry.probability.nz/npm/@probability-nz/analog/-/analog-0.1.0.tgz/dist/analog.json",
   templates: {
     pawn: { name: "Pawn", src: "./models/pawn.glb" },
     king: { name: "King" },
