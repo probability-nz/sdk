@@ -1,20 +1,13 @@
 /**
- * Converts TypeScript types to standalone JSON Schema 2020-12 via Typia.
- * To add types, add them to the tuple below.
+ * Converts OpenAPI 3.1 output from Typia to standalone JSON Schema 2020-12.
+ * To add types, edit the tuple in `openapi.ts`.
  *
  * @note Output includes OpenAPI `discriminator` keywords (ignored by JSON Schema).
  * @fileoverview
  */
 
-import typia from "typia";
 import { mkdirSync, writeFileSync } from "node:fs";
-import type { GameManifest, GameState } from "../src/doc";
-import type { PresenceState } from "../src/presence";
-
-const openapi = typia.json.schemas<
-  [GameManifest, GameState, PresenceState], // Types go here
-  "3.1"
->();
+import { openapi } from "./openapi";
 
 const schema = JSON.parse(
   JSON.stringify(openapi, (key, value) => {

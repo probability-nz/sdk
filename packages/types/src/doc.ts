@@ -6,7 +6,10 @@ export const SCHEMA_VERSION = "https://probability.nz/schemas/analog/v0";
  */
 export type Vector3Tuple = [x: number, y: number, z: number];
 
-/** @group Core */
+/**
+ * A named orientation of a piece (e.g. die face)
+ * @group Core
+ */
 export interface Face {
   name: string;
   rotation: Vector3Tuple;
@@ -20,14 +23,25 @@ export interface PieceTemplate {
   name?: string;
   /** Path to a glTF/GLB model */
   src?: string;
-  /** Key into templates to inherit defaults from */
+  /**
+   * Key into the sibling `templates` object to inherit defaults from
+   */
   template?: string;
+  /** @default [0, 0, 0] */
   position?: Vector3Tuple;
+  /** @default [1, 1, 1] */
   scale?: Vector3Tuple;
-  /** Euler rotation (degrees) */
+  /**
+   * Euler rotation (degrees)
+   * @default [0, 0, 0]
+   */
   rotation?: Vector3Tuple;
-  /** CSS color string, or null for no tint */
+  /**
+   * CSS color string, or null for no tint
+   * @default "#808080"
+   */
   color?: string | null;
+  /** @default false */
   locked?: boolean;
   /** Named face orientations (e.g. for dice) */
   faces?: Face[];
@@ -41,7 +55,9 @@ export interface Piece extends PieceTemplate {
   children?: Piece[];
 }
 
-/** @group Core */
+/** Reusable piece defaults, keyed by template name
+ * @group Core
+ */
 export type Templates = Record<string, PieceTemplate>;
 
 /**
@@ -53,7 +69,10 @@ export interface Scenario {
   children: Piece[];
 }
 
-/** @group Advanced */
+/**
+ * Static game definition — imported to create a new GameState
+ * @group Advanced
+ */
 export interface GameManifest {
   $schema: typeof SCHEMA_VERSION;
   templates: Templates;
