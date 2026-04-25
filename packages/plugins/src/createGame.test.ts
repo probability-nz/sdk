@@ -1,9 +1,9 @@
 import { describe, expect, it, vi } from "vitest";
-import { type GameManifest, SCHEMA_VERSION } from "@probability-nz/types";
+import { type GameManifest, SCHEMA_URL } from "@probability-nz/types";
 import { createGame } from "./createGame";
 
 const manifest: GameManifest = {
-  $schema: SCHEMA_VERSION,
+  $schema: SCHEMA_URL,
   templates: { pawn: { name: "Pawn" } },
   scenarios: [{ name: "Default", children: [{ template: "pawn" }] }],
 };
@@ -17,7 +17,7 @@ describe("createGame", () => {
 
     expect(repo.create).toHaveBeenCalledOnce();
     expect(repo.create).toHaveBeenCalledWith({
-      $schema: SCHEMA_VERSION,
+      $schema: SCHEMA_URL,
       children: manifest.scenarios[0]!.children,
       templates: manifest.templates,
     });

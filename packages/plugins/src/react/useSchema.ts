@@ -1,14 +1,11 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
-
-const SCHEMA_URL = "https://schema.probability.nz/v1/schema.json";
-
-// TODO: Replace with real generated schema JSON
-const HARDCODED_SCHEMA = {};
+import { SCHEMA_URL } from "@probability-nz/types";
+import analogSchema from "@probability-nz/types/analog.json" with { type: "json" };
 
 /** @internal */
-function fetchSchema(url: string): Promise<unknown> {
+function fetchSchema(url: string): Promise<typeof analogSchema> {
   if (url === SCHEMA_URL) {
-    return Promise.resolve(HARDCODED_SCHEMA);
+    return Promise.resolve(analogSchema);
   }
   throw new Error(`Unknown schema: ${url}`);
 }

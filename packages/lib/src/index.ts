@@ -19,5 +19,5 @@ export type {
 export { toColor, type HexColor } from "./toColor";
 export { loadManifest } from "./manifest";
 export { buildGameState } from "./buildGameState";
-export { default as validate, assertValid } from "./validate";
+export { assertGameState, assertPresenceState } from "./validate";
 export { objectIdToPath } from "./objectIdToPath";

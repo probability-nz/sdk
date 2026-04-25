@@ -1,4 +1,6 @@
+import typia from "typia";
 import type { HashContext } from "@probability-nz/types";
+
 /**
  * Parse plugin context from the URL hash.
  * @param hash - Expects `location.hash` format (with `#` prefix).
@@ -11,8 +13,7 @@ export const parseHashContext = (hash: string): HashContext | undefined => {
     return undefined;
   }
   try {
-    // TODO: Validate against schema
-    return JSON.parse(decodeURIComponent(raw)) as HashContext;
+    return typia.assert<HashContext>(JSON.parse(decodeURIComponent(raw)));
   } catch {
     return undefined;
   }

@@ -1,14 +1,22 @@
 /** Automerge document URL (e.g. `automerge:111111111111111111`) */
 export type AutomergeUrl = `automerge:${string}`;
 
+// Named types so typia emits clean $defs names in the JSON schema.
+// JsonArray must be an interface — a `type` alias would be a circular reference.
+// eslint-disable-next-line typescript-eslint/no-empty-interface
+interface JsonArray extends Array<JsonValue> {}
+interface JsonObject {
+  [key: string]: JsonValue;
+}
+
 /** JSON-serializable value */
 export type JsonValue =
   | string
   | number
   | boolean
   | null
-  | JsonValue[]
-  | { [key: string]: JsonValue };
+  | JsonArray
+  | JsonObject;
 
 /**
  * Connection context passed to plugins via the URL hash

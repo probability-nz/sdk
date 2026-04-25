@@ -1,11 +1,12 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
+import { SCHEMA_URL } from "@probability-nz/types";
 import { loadManifest } from "./manifest";
 
 const PLUGIN_URL = "https://registry.example.com/plugins/chess/";
 
 const mockPackageJson = { main: "./dist/manifest.json" };
 const mockManifest = {
-  $schema: "https://probability.nz/schemas/analog/v0",
+  $schema: SCHEMA_URL,
   templates: {
     pawn: { name: "Pawn", src: "./models/pawn.glb" },
     king: { name: "King" },
@@ -52,7 +53,7 @@ describe("loadManifest", () => {
 
   it("throws if package.json has no main field", async () => {
     mockFetch({ [`${PLUGIN_URL}package.json`]: {} });
-    await expect(loadManifest(PLUGIN_URL)).rejects.toThrow('missing "main"');
+    await expect(loadManifest(PLUGIN_URL)).rejects.toThrow(/\$input\.main/);
   });
 
   it("throws if main is an absolute URL", async () => {

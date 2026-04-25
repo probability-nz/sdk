@@ -1,5 +1,9 @@
 import { type Doc, type Prop, getObjectId } from "@automerge/automerge";
 
+function isRecord(x: unknown): x is Record<string, unknown> {
+  return typeof x === "object" && x !== null && !Array.isArray(x);
+}
+
 /**
  * Find the path to an object in an Automerge document by its ID.
  * @experimental Will be removed when Automerge adds native support.
@@ -13,10 +17,6 @@ export function objectIdToPath(doc: Doc<unknown>, objId: string): Prop[] | undef
     if (getObjectId(node) === objId) {
       return true;
     }
-    if (node === null || typeof node !== "object") {
-      return false;
-    }
-
     if (Array.isArray(node)) {
       for (let i = 0; i < node.length; i++) {
         path.push(i);
@@ -25,10 +25,12 @@ export function objectIdToPath(doc: Doc<unknown>, objId: string): Prop[] | undef
         }
         path.pop();
       }
-    } else {
+      return false;
+    }
+    if (isRecord(node)) {
       for (const key of Object.keys(node)) {
         path.push(key);
-        if (walk((node as Record<string, unknown>)[key])) {
+        if (walk(node[key])) {
           return true;
         }
         path.pop();

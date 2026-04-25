@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { type GameManifest, SCHEMA_VERSION } from "@probability-nz/types";
+import { type GameManifest, SCHEMA_URL } from "@probability-nz/types";
 import { buildGameState } from "./buildGameState";
 
 const manifest: GameManifest = {
-  $schema: SCHEMA_VERSION,
+  $schema: SCHEMA_URL,
   templates: { pawn: { name: "Pawn" } },
   scenarios: [
     { name: "Default", children: [{ template: "pawn" }] },
@@ -14,7 +14,7 @@ const manifest: GameManifest = {
 describe("buildGameState", () => {
   it("builds state from the first scenario", () => {
     const state = buildGameState(manifest, 0);
-    expect(state.$schema).toBe(SCHEMA_VERSION);
+    expect(state.$schema).toBe(SCHEMA_URL);
     expect(state.children).toBe(manifest.scenarios[0]!.children);
     expect(state.templates).toBe(manifest.templates);
   });

@@ -1,4 +1,9 @@
+import typia from "typia";
 import type { GameManifest } from "@probability-nz/types";
+
+interface PackageJson {
+  main: string;
+}
 
 /** @internal */
 const fetchJson = async (url: string): Promise<unknown> => {
@@ -21,7 +26,7 @@ const resolveSrc = <T extends { src?: string; children?: T[] }>(node: T, base: s
 /**
  * Fetch a game manifest, resolving asset URLs.
  * @param url - Must end with `/`.
- * @throws On network errors or missing `main` field.
+ * @throws On network errors, missing `main` field, or schema validation failure.
  * @example
  * ```ts
  * const manifest = await loadManifest('https://registry.probability.nz/games/chess/');
@@ -34,20 +39,13 @@ export async function loadManifest(url: string): Promise<GameManifest> {
     throw new Error("loadManifest: url must end with /");
   }
 
-  const pkg = await fetchJson(`${url}package.json`);
-  const main = (pkg as Record<string, unknown> | null)?.main;
-  if (typeof main !== "string") {
-    throw new Error('loadManifest: package.json missing "main" field');
-  }
-
-  const manifestUrl = new URL(main, url).href;
+  const pkg = typia.assert<PackageJson>(await fetchJson(`${url}package.json`));
+  const manifestUrl = new URL(pkg.main, url).href;
   if (!manifestUrl.startsWith(url)) {
     throw new Error('loadManifest: "main" must be a relative path');
   }
-  const manifest = (await fetchJson(manifestUrl)) as GameManifest;
+  const manifest = typia.assert<GameManifest>(await fetchJson(manifestUrl));
   const base = new URL(".", manifestUrl).href;
-
-  // TODO: Validate manifest against schema
 
   const templates = Object.fromEntries(
     Object.entries(manifest.templates).map(([k, v]) => [k, resolveSrc(v, base)]),

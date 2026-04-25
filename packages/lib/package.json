@@ -27,18 +27,21 @@
     }
   },
   "scripts": {
-    "build": "tsup src/index.ts --format esm --dts",
+    "build": "tsup",
     "lint": "oxlint -c ../../.oxlintrc.json && tsc --noEmit",
     "test": "vitest run"
   },
   "dependencies": {
     "@automerge/automerge": "^3",
-    "@probability-nz/types": "workspace:*"
+    "@probability-nz/types": "workspace:*",
+    "ajv": "^8"
   },
   "devDependencies": {
+    "@typia/unplugin": "12.0.0-dev.20260312-3",
     "jsdom": "^28.0.0",
     "tsup": "^8.5.0",
     "typescript": "^5.9.3",
+    "typia": "12.0.0-dev.20260312-3",
     "vitest": "^4.0.18"
   }
 }

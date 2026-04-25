@@ -1,4 +1,5 @@
 import type { Prop } from "@automerge/automerge";
+/** Automerge property index (string key or array index) */
 export type { Prop };
 import type { JsonValue } from "./hashroute";
 

@@ -9,7 +9,7 @@ import {
 import { useCallback, useRef, useState } from "react";
 import { Store } from "@tanstack/store";
 import { useThrottledCallback } from "@tanstack/react-pacer";
-import { assertValid } from "@probability-nz/lib";
+import { assertPresenceState } from "@probability-nz/lib";
 import { useSchema } from "./useSchema";
 
 const DEFAULT_TICK_RATE = 15;
@@ -63,7 +63,7 @@ export function usePresenceState<T extends PresenceState>(
     (updater: (prev: T) => T) => {
       const prev = localState.state;
       const next = updater(prev);
-      assertValid(schema, next, "PresenceState");
+      assertPresenceState(schema, next);
       localState.setState(() => next);
       broadcast();
     },

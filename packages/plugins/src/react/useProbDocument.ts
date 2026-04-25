@@ -1,7 +1,7 @@
 import type { ChangeFn, ChangeOptions, Doc } from "@automerge/automerge";
 import { type AnyDocumentId, useDocument as useAutomergeDocument } from "@automerge/react";
 import { useCallback } from "react";
-import { assertValid } from "@probability-nz/lib";
+import { assertGameState } from "@probability-nz/lib";
 import { useSchema } from "./useSchema";
 
 type ChangeDocFn<T> = (changeFn: ChangeFn<T>, options?: ChangeOptions<T>) => void;
@@ -23,7 +23,7 @@ export function useProbDocument<T extends { $schema: string }>(
     (fn: ChangeFn<T>, options?: ChangeOptions<T>) => {
       rawChangeDoc((d) => {
         fn(d);
-        assertValid(schema, d, "GameState");
+        assertGameState(schema, d);
       }, options);
     },
     [rawChangeDoc, schema],
