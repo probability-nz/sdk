@@ -1,4 +1,4 @@
-name: Docs
+name: Pages
 
 on:
   push:
@@ -14,7 +14,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  docs:
+  pages:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -35,9 +35,22 @@ jobs:
 
       - run: pnpm --filter @probability-nz/docs docs
 
+      - name: Stage site
+        env:
+          REPO: ${{ github.event.repository.name }}
+        run: |
+          mkdir -p _site
+          cp -r packages/docs/dist/. _site/
+          for dir in examples/*/; do
+            name=$(basename "$dir")
+            VITE_BASE_PATH="/$REPO/examples/$name/" pnpm -C "$dir" build
+            mkdir -p "_site/examples/$name"
+            cp -r "$dir/dist/." "_site/examples/$name/"
+          done
+
       - uses: actions/upload-pages-artifact@v4
         with:
-          path: packages/docs/dist
+          path: _site
 
       - uses: actions/deploy-pages@v4
         id: deployment

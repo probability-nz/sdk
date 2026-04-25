@@ -1,7 +1,8 @@
-import { type ReactNode, useContext, useEffect, useState } from "react";
+import { type ReactNode, useContext, useState } from "react";
 import { Repo, RepoContext, WebSocketClientAdapter } from "@automerge/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { DEV } from "@probability-nz/lib";
+
+declare const process: { env: { NODE_ENV?: string } };
 
 /** @group Core */
 export interface ProbProviderProps {
@@ -17,33 +18,23 @@ export interface ProbProviderProps {
 export function ProbProvider({ sync = [], children }: ProbProviderProps) {
   // Warn on nesting (always call hook to satisfy rules of hooks)
   const parent = useContext(RepoContext);
-  if (DEV && parent) {
+  if (process.env.NODE_ENV !== "production" && parent) {
     console.warn("Nested <ProbProvider> detected. This creates a separate Repo instance.");
   }
 
   const [queryClient] = useState(() => new QueryClient());
-  const [repo] = useState(() => new Repo({ network: [], isEphemeral: true }));
-
-  useEffect(
-    () => () => {
-      void repo.shutdown();
-    },
-    [repo],
+  const [repo] = useState(
+    () =>
+      new Repo({
+        network: [...new Set(sync)].map((url) => new WebSocketClientAdapter(url)),
+        isEphemeral: true,
+      }),
   );
 
-  useEffect(() => {
-    const { networkSubsystem } = repo;
-    const adapters = Array.from(new Set(sync), (url) => {
-      const adapter = new WebSocketClientAdapter(url);
-      networkSubsystem.addNetworkAdapter(adapter);
-      return adapter;
-    });
-    return () => {
-      adapters.forEach((a) => {
-        networkSubsystem.removeNetworkAdapter(a);
-      });
-    };
-  }, [repo, sync]);
+  // eslint-disable-next-line no-warning-comments
+  // TODO: Uncomment once https://github.com/automerge/automerge-repo/blob/main/packages/automerge-repo-network-websocket/src/WebSocketClientAdapter.ts#L156 no longer throws on a second disconnect.
+  // eslint-disable-next-line capitalized-comments
+  // useEffect(() => () => void repo.shutdown(), [repo]);
 
   return (
     <QueryClientProvider client={queryClient}>

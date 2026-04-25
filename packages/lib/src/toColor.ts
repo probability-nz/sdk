@@ -1,14 +1,7 @@
+import { fnv1a } from "./fnv1a";
+
 /** @group Presence */
 export type HexColor = `#${string}`;
-
-/** @internal FNV-1a non-cryptographic hash. */
-const fnv1a = (s: string): number => {
-  let h = 2166136261;
-  for (let i = 0; i < s.length; i++) {
-    h = Math.imul(h ^ s.charCodeAt(i), 16777619);
-  }
-  return h >>> 0;
-};
 
 /**
  * @internal Convert HSL to hex.

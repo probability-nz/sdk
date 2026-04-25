@@ -29,10 +29,12 @@
   "scripts": {
     "build": "tsup",
     "lint": "oxlint -c ../../.oxlintrc.json && tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "prepublishOnly": "pnpm build"
   },
   "dependencies": {
     "@automerge/automerge": "^3",
+    "@joaomoreno/unique-names-generator": "^5.2.0",
     "@probability-nz/types": "workspace:*",
     "ajv": "^8"
   },

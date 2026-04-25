@@ -31,7 +31,11 @@
   "scripts": {
     "build": "tsc && typia generate --input scripts/generate-schema --output dist/.generated --project tsconfig.schema.json && tsx dist/.generated/index.ts",
     "lint": "oxlint -c ../../.oxlintrc.json && tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "prepublishOnly": "pnpm build"
+  },
+  "dependencies": {
+    "@automerge/automerge-repo": "^2.5.3"
   },
   "devDependencies": {
     "@automerge/automerge": "^3",

@@ -34,7 +34,8 @@
   "scripts": {
     "build": "tsup",
     "lint": "oxlint -c ../../.oxlintrc.json && tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "prepublishOnly": "pnpm build"
   },
   "dependencies": {
     "@probability-nz/lib": "workspace:*",

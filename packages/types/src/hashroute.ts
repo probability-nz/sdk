@@ -1,5 +1,7 @@
-/** Automerge document URL (e.g. `automerge:111111111111111111`) */
-export type AutomergeUrl = `automerge:${string}`;
+import type { AutomergeUrl as RepoAutomergeUrl } from "@automerge/automerge-repo/slim";
+
+/** Automerge document URL (e.g. `automerge:111111111111111111`). */
+export type AutomergeUrl = RepoAutomergeUrl & `automerge:${string}`;
 
 // Named types so typia emits clean $defs names in the JSON schema.
 // JsonArray must be an interface — a `type` alias would be a circular reference.

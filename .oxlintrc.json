@@ -13,6 +13,18 @@
         "typescript/consistent-type-imports": "off",
         "typescript/no-unsafe-type-assertion": "off"
       }
+    },
+    {
+      // Tooling false positives: tsgolint can't resolve generics through dist .d.ts.
+      // Drop this once oxlint resolves them (or examples consume src directly).
+      "files": ["**/examples/**/*.ts", "**/examples/**/*.tsx"],
+      "rules": {
+        "promise/prefer-await-to-callbacks": "off",
+        "typescript/no-unsafe-argument": "off",
+        "typescript/no-unsafe-assignment": "off",
+        "typescript/no-unsafe-call": "off",
+        "typescript/no-unsafe-member-access": "off"
+      }
     }
   ],
   "categories": {

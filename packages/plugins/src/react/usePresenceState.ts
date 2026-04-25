@@ -10,6 +10,7 @@ import { useCallback, useRef, useState } from "react";
 import { Store } from "@tanstack/store";
 import { useThrottledCallback } from "@tanstack/react-pacer";
 import { assertPresenceState } from "@probability-nz/lib";
+import { SCHEMA_URL } from "@probability-nz/types";
 import { useSchema } from "./useSchema";
 
 const DEFAULT_TICK_RATE = 15;
@@ -32,7 +33,10 @@ export function usePresenceState<T extends PresenceState>(
   const [doc] = useAutomergeDocument<{ $schema: string }>(docUrl, {
     suspense: true,
   });
-  const schema = useSchema(doc.$schema);
+  if (!doc.$schema) {
+    console.warn(`Document ${String(docUrl)} has no $schema; defaulting to ${SCHEMA_URL}`);
+  }
+  const schema = useSchema(doc.$schema ?? SCHEMA_URL);
   const handle = useDocHandle(docUrl, { suspense: true });
   const { peerStates, update: broadcastKey } = usePresence<T>({
     handle,

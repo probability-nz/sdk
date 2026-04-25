@@ -2,6 +2,7 @@
 export {
   parseHashContext,
   toColor,
+  getPeerName,
   loadManifest,
   objectIdToPath,
   type GameState,
