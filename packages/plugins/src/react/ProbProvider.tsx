@@ -1,4 +1,4 @@
-import { type ReactNode, useContext, useState } from "react";
+import { type ReactNode, useContext, useEffect, useRef, useState } from "react";
 import { Repo, RepoContext, WebSocketClientAdapter } from "@automerge/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -23,13 +23,34 @@ export function ProbProvider({ sync = [], children }: ProbProviderProps) {
   }
 
   const [queryClient] = useState(() => new QueryClient());
-  const [repo] = useState(
-    () =>
-      new Repo({
-        network: [...new Set(sync)].map((url) => new WebSocketClientAdapter(url)),
-        isEphemeral: true,
-      }),
+  const adaptersByUrl = useRef<Map<string, WebSocketClientAdapter> | null>(null);
+  adaptersByUrl.current ??= new Map(
+    [...new Set(sync)].map((url) => [url, new WebSocketClientAdapter(url)] as const),
   );
+  const [repo] = useState(
+    () => new Repo({ network: [...adaptersByUrl.current!.values()], isEphemeral: true }),
+  );
+
+  useEffect(() => {
+    const current = adaptersByUrl.current!;
+    const wanted = new Set(sync);
+    const have = new Set(current.keys());
+
+    [...have]
+      .filter((url) => !wanted.has(url))
+      .forEach((url) => {
+        repo.networkSubsystem.removeNetworkAdapter(current.get(url)!);
+        current.delete(url);
+      });
+
+    [...wanted]
+      .filter((url) => !have.has(url))
+      .forEach((url) => {
+        const adapter = new WebSocketClientAdapter(url);
+        repo.networkSubsystem.addNetworkAdapter(adapter);
+        current.set(url, adapter);
+      });
+  }, [repo, sync]);
 
   // eslint-disable-next-line no-warning-comments
   // TODO: Uncomment once https://github.com/automerge/automerge-repo/blob/main/packages/automerge-repo-network-websocket/src/WebSocketClientAdapter.ts#L156 no longer throws on a second disconnect.
