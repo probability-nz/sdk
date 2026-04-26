@@ -4,6 +4,8 @@ React SDK for building [Probability](https://probability.nz) plugins. Plugins ar
 
 A plugin is launched via a URL hash carrying a `HashProps` object. Once mounted, `<ProbProvider>` connects to the sync server; `useProbDocument` handles the game state and `usePresenceState` broadcasts presence.
 
+A working example lives at [`examples/example-plugin`](https://github.com/probability-nz/sdk/tree/main/examples/example-plugin) — see its [README](https://github.com/probability-nz/sdk/tree/main/examples/example-plugin#readme) for run/launch instructions.
+
 ```mermaid
 flowchart TD
     subgraph prob ["Probability app"]
@@ -37,9 +39,9 @@ flowchart TD
 ### Errors:
 
 1. **Invalid URL hash**: `parseHashProps()` returned `undefined`; consumer should render a fallback.
-2. **Automerge sync**: doc never loads (60s timeout). [WebSocket errors are silent.](https://github.com/automerge/automerge-repo/issues/208)
+2. **Automerge sync**: doc never loads (~60s timeout). [WebSocket errors are silent.](https://github.com/automerge/automerge-repo/issues/208)
 3. **`changeDoc()`**: doc schema validation failed
 4. **`useProbDocument`**: document deleted by peer
 5. **Doc update**: invalid mutation (eg `undefined`, non-serializable values)
-6. **Peer presence**: peer broadcasts an invalid presence state. Currently silent — TODO.
+6. **Peer presence**: Warning: peer broadcasted an invalid presence state. Currently silent — TODO.
 7. **`update()`**: local presence schema validation failed

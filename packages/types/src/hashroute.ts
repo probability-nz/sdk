@@ -34,8 +34,8 @@ export interface HashProps {
   /** Sync server WebSocket URLs */
   sync: [string, ...string[]];
   /**
-   * @experimental Will be a base64url-encoded KeyHive/Beelay Ed25519
-   * `Signed<Delegation>`.
+   * @experimental Will be a base64url-encoded [KeyHive](https://github.com/inkandswitch/keyhive)/Beelay
+   * Ed25519 `Signed<Delegation>`.
    */
   delegation?: string;
 }

@@ -15,7 +15,8 @@ tmp/
 test-results/
 *.tsbuildinfo
 coverage/
-packages/docs/src/content/docs/plugins/
+packages/docs/src/content/docs/react/
+packages/docs/src/content/docs/lib/
 packages/docs/src/content/docs/types/
 packages/docs/dist/
 packages/docs/.astro/

@@ -1,0 +1,55 @@
+---
+title: Platform
+description: A walkthrough for building, testing, and sharing a game on Probability.
+---
+
+A game on [Probability](https://probability.nz) is a zip file containing a manifest and 3D models / images. This guide walks you through making one and getting it in front of players.
+
+If you'd rather start from a working game, [`probability-nz/chess`](https://github.com/probability-nz/chess) is ready to go — zip it for upload, or [launch it directly](https://prob.nz/play#template=https://raw.githubusercontent.com/garbo-succus/chess/main/) (no zip needed). [`garbo-succus/checkers`](https://github.com/garbo-succus/checkers) is another example.
+
+## 1. Set up the folder
+
+A game template is a folder with three things — a `package.json`, a `probability.json` manifest, and your assets:
+
+```
+my-game/
+├── package.json
+├── probability.json
+└── *.glb / *.png      # 3D models, images, etc.
+```
+
+`package.json` is small — it just needs a `main` field pointing at the manifest:
+
+```jsonc
+{
+  "name": "Your Game Name",
+  "version": "0.0.0",
+  "main": "probability.json"
+}
+```
+
+## 2. Write the manifest
+
+`probability.json` is a [`GameManifest`](../types/readme/#gamemanifest) — a list of `scenarios` (named starting arrangements of [`Piece`](../types/readme/#piece)s) and optional `templates` (reusable piece defaults).
+
+Pieces reference 3D models (`src: "knight.glb"`) and place them in the world. Coordinates are Y-up; positions are in metres.
+
+The manifest's full shape lives in `dist/analog.json` from [`@probability-nz/types`](../types/readme/). You can validate yours at runtime with [`assertGameState`](../lib/readme/#assertgamestate).
+
+## 3. Test it locally
+
+Serve the unzipped folder from a host that allows CORS for `probability.nz`, then load it:
+
+```
+https://probability.nz/play#template={folder URL}
+```
+
+You can use GitHub Pages, [`raw.githubusercontent.com`](https://raw.githubusercontent.com/), or any CORS-friendly static host. Example: [Play Chess](https://probability.nz/play#template=https://raw.githubusercontent.com/garbo-succus/chess/main/).
+
+## 4. Share it
+
+When you're happy, zip the folder and upload it to [mod.io/g/probability](https://mod.io/g/probability) so it shows up in the in-app catalog:
+
+- First gallery image is the icon (min 400×400px).
+- "Content listing image" is the header background.
+- Underscores in usernames render as spaces.

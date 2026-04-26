@@ -4,6 +4,27 @@ sidebar:
   label: Index
 ---
 
-import Readme from '../../../../../README.md';
+import { CardGrid, LinkCard } from "@astrojs/starlight/components";
 
-<Readme />
+[Probability](https://probability.nz) is a tool for playing 3D tabletop games.
+
+## How it works
+
+Once loaded, live game data is kept in an [Automerge document](https://automerge.org/docs/reference/concepts/#documents); essentially, a shared JSON database.
+
+The SDK exposes the doc and "presence" data (temporary player info). It can be used to build plugins, or small web apps connected to the game (AI opponents, rules engines, dice rollers, etc).
+
+## What do you want to do?
+
+<CardGrid>
+	<LinkCard
+		title="Make a game template"
+		href="/sdk/platform/"
+		description="Bundle assets and scenarios into a zip file players can launch."
+	/>
+	<LinkCard
+		title="Write a plugin"
+		href="/sdk/react/readme/"
+		description="Build a React app that can modify the doc and broadcast presence."
+	/>
+</CardGrid>

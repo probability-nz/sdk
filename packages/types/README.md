@@ -1,11 +1,6 @@
 # @probability-nz/types
 
-TypeScript types and JSON Schema for Probability documents, presence, and hash-route context.
-
-## Exports
-
-- `./` — TS types (`GameState`, `GameManifest`, `Piece`, `PresenceState`, `HashProps`, …) and the `SCHEMA_URL` constant.
-- `./analog.json` — JSON Schema 2020-12 for `GameState`, generated from the TS types.
+TypeScript types and JSON Schema for Probability documents, presence, and hash-route context. The `./analog.json` subpath ships a JSON Schema 2020-12 for `GameState`, generated from the TS types.
 
 ## Build
 

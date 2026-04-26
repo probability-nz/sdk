@@ -9,6 +9,7 @@
   "dependencies": {
     "@astrojs/starlight": "^0.38.0",
     "astro": "^6.0.2",
+    "rehype-mermaid": "^3.0.0",
     "starlight-theme-flexoki": "^0.2.2",
     "starlight-typedoc": "^0.21.5",
     "typedoc": "^0.28.17",

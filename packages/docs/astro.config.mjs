@@ -1,10 +1,20 @@
 import starlight from "@astrojs/starlight";
 import { defineConfig } from "astro/config";
+import rehypeMermaid from "rehype-mermaid";
 import starlightThemeFlexoki from "starlight-theme-flexoki";
 import starlightTypeDoc from "starlight-typedoc";
 
 export default defineConfig({
 	base: "/sdk",
+	markdown: {
+		syntaxHighlight: { excludeLangs: ["mermaid"] },
+		rehypePlugins: [[rehypeMermaid, { strategy: "img-svg" }]],
+	},
+	redirects: {
+		"/react": "/sdk/react/readme",
+		"/lib": "/sdk/lib/readme",
+		"/types": "/sdk/types/readme",
+	},
 	integrations: [
 		starlight({
 			title: "Probability SDK",
@@ -19,31 +29,54 @@ export default defineConfig({
 			customCss: ["./src/styles/custom.css"],
 			sidebar: [
 				{ slug: "index" },
-				{ slug: "plugins" },
-				{ slug: "types" },
+				{ slug: "platform" },
+				{
+					label: "Reference",
+					items: [
+						{ label: "React", slug: "react/readme" },
+						{ label: "Lib", slug: "lib/readme" },
+						{ label: "Types", slug: "types/readme" },
+					],
+				},
 			],
 			plugins: [
 				starlightThemeFlexoki({ accentColor: "purple" }),
 				starlightTypeDoc({
-					entryPoints: ["./api-entry.ts"],
+					entryPoints: ["../react/src/index.ts"],
 					tsconfig: "./tsconfig.json",
-					output: "plugins",
+					output: "react",
 					sidebar: {
-						label: "Plugins",
+						label: "React",
 						collapsed: false,
 					},
 					typeDoc: {
-						name: "Plugins",
+						name: "React",
 						outputFileStrategy: "modules",
 						membersWithOwnFile: [],
 						mergeReadme: true,
-						readme: "../plugins/README.md",
-						entryFileName: "index",
+						readme: "../react/README.md",
 						groupOrder: ["Core", "Presence", "Advanced"],
 					},
 				}),
 				starlightTypeDoc({
-					entryPoints: ["./types-entry.ts"],
+					entryPoints: ["../lib/src/index.ts"],
+					tsconfig: "./tsconfig.json",
+					output: "lib",
+					sidebar: {
+						label: "Lib",
+						collapsed: false,
+					},
+					typeDoc: {
+						name: "Lib",
+						outputFileStrategy: "modules",
+						membersWithOwnFile: [],
+						mergeReadme: true,
+						readme: "../lib/README.md",
+						groupOrder: ["Core", "Presence", "Advanced"],
+					},
+				}),
+				starlightTypeDoc({
+					entryPoints: ["../types/src/index.ts"],
 					tsconfig: "./tsconfig.json",
 					output: "types",
 					sidebar: {
@@ -54,7 +87,6 @@ export default defineConfig({
 						name: "Types",
 						outputFileStrategy: "modules",
 						membersWithOwnFile: [],
-						entryFileName: "index",
 						groupOrder: ["Core", "Presence", "Advanced"],
 					},
 				}),

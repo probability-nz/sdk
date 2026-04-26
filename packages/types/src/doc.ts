@@ -65,7 +65,25 @@ export interface Piece extends PieceTemplate {
   children?: Piece[];
 }
 
-/** Reusable piece defaults, keyed by template name
+/**
+ * Reusable piece defaults, keyed by template name. Templates can inherit from
+ * other templates via the `template` field, and share syntax with pieces minus
+ * a `children` property.
+ * @example
+ * ```jsonc
+ * {
+ *   "$schema": "https://registry.probability.nz/npm/@probability-nz/types/-/types-0.0.0.tgz/dist/analog.json",
+ *   "templates": {
+ *     "defaults": { "scale": [0.1, 0.1, 0.1] },
+ *     "redToken": { "template": "defaults", "name": "Red token", "src": "redToken.glb" }
+ *   },
+ *   "children": [
+ *     { "template": "redToken", "position": [0.0, 0, 0] },
+ *     { "template": "redToken", "position": [0.1, 0, 0] },
+ *     { "template": "redToken", "position": [0.2, 0, 0] }
+ *   ]
+ * }
+ * ```
  * @group Core
  */
 export type Templates = Record<string, PieceTemplate>;
@@ -80,7 +98,52 @@ export interface Scenario {
 }
 
 /**
- * Static game definition — imported to create a new GameState
+ * Static game definition — imported to create a new GameState. Similar to a
+ * `GameState` but with a `scenarios` array on the root instead of `children`.
+ * @example
+ * ```jsonc
+ * // 2-4 and 4-8 player scenarios
+ * {
+ *   "$schema": "https://registry.probability.nz/npm/@probability-nz/types/-/types-0.0.0.tgz/dist/analog.json",
+ *   "templates": { "token": { "src": "token.glb" } },
+ *   "scenarios": [
+ *     {
+ *       "name": "2-4 player setup",
+ *       "children": [
+ *         {
+ *           "name": "Game board",
+ *           "src": "gameboard.glb",
+ *           "children": [
+ *             { "template": "token" },
+ *             { "template": "token" },
+ *             { "template": "token" },
+ *             { "template": "token" }
+ *           ]
+ *         }
+ *       ]
+ *     },
+ *     {
+ *       "name": "4-8 player setup",
+ *       "children": [
+ *         {
+ *           "name": "Game board",
+ *           "src": "gameboard.glb",
+ *           "children": [
+ *             { "template": "token" },
+ *             { "template": "token" },
+ *             { "template": "token" },
+ *             { "template": "token" },
+ *             { "template": "token" },
+ *             { "template": "token" },
+ *             { "template": "token" },
+ *             { "template": "token" }
+ *           ]
+ *         }
+ *       ]
+ *     }
+ *   ]
+ * }
+ * ```
  * @group Advanced
  */
 export interface GameManifest {
@@ -93,6 +156,32 @@ type __AutomergeMoves = Record<string, string>;
 
 /**
  * The Automerge document shape — a digital analog of the physical game.
+ * Pieces are stacked on each other and positioned relatively.
+ * @example
+ * ```jsonc
+ * // A token, sitting on a card, sitting on a chessboard
+ * {
+ *   "$schema": "https://registry.probability.nz/npm/@probability-nz/types/-/types-0.0.0.tgz/dist/analog.json",
+ *   "templates": {},
+ *   "children": [
+ *     {
+ *       "name": "Chess Board",
+ *       "position": [0, 0.1, 0],
+ *       "locked": true,
+ *       "src": "Chess_Board.glb",
+ *       "children": [
+ *         {
+ *           "name": "card",
+ *           "position": [0, 0.002, 0],
+ *           "children": [
+ *             { "name": "pawn", "position": [0, 0.3, 0], "children": [] }
+ *           ]
+ *         }
+ *       ]
+ *     }
+ *   ]
+ * }
+ * ```
  * @group Core
  */
 export interface GameState {
