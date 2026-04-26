@@ -1,10 +1,6 @@
-import {
-  type HashProps,
-  getPeerName,
-  toColor,
-  usePresenceState,
-  useProbDocument,
-} from "@probability-nz/react";
+import { getPeerName, toColor } from "@probability-nz/lib";
+import { usePresenceState, useProbDocument } from "@probability-nz/react";
+import type { HashProps } from "@probability-nz/types";
 import { useStore } from "@tanstack/react-store";
 import { useRepo } from "@automerge/react";
 import pkg from "../package.json" with { type: "json" };

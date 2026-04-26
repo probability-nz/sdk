@@ -1,17 +1,22 @@
 /** @packageDocumentation Shared utilities, types, and pure functions for Probability plugins. */
 export { parseHashProps } from "./parseHashProps";
+export { SCHEMA_URL } from "@probability-nz/types";
 export type {
-  GameState,
-  FocusOp,
-  Face,
-  GameManifest,
+  AnchoredPath,
+  AutomergeUrl,
   Client,
   Color,
+  Face,
+  FocusOp,
+  GameManifest,
+  GameState,
   HashProps,
+  JsonValue,
   MoveOp,
   Piece,
   PieceTemplate,
   PresenceState,
+  Prop,
   PutOp,
   Scenario,
   Templates,

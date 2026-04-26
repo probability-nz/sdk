@@ -12,6 +12,7 @@
   "dependencies": {
     "@automerge/automerge": "^3.2.3",
     "@automerge/react": "2.5.3",
+    "@probability-nz/lib": "workspace:*",
     "@probability-nz/react": "workspace:*",
     "@probability-nz/types": "workspace:*",
     "@tanstack/react-pacer": "^0.20.0",
