@@ -21,7 +21,11 @@ export type JsonValue =
   | JsonObject;
 
 /**
- * Connection context passed to plugins via the URL hash
+ * Connection context passed to plugins via the URL hash.
+ * @example
+ * ```
+ * https://example.com/plugin#{"doc":"automerge:...","sync":["wss://..."],"delegation":"..."}
+ * ```
  * @group Core
  */
 export interface HashProps {
