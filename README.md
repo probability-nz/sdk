@@ -2,6 +2,15 @@
 
 [Probability](https://probability.nz) is an app for playing tabletop & board games.
 
+## Packages
+
+- [`@probability-nz/react`](packages/react) — React SDK for building plugins
+- [`@probability-nz/lib`](packages/lib) — non-React utilities
+- [`@probability-nz/types`](packages/types) — TS types and JSON Schema
+- [`examples/example-plugin`](examples/example-plugin) — minimal plugin example
+
+API docs: <https://probability-nz.github.io/sdk/>.
+
 ---
 
 ## Game state

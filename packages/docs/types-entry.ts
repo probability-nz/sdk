@@ -3,18 +3,24 @@
  * Type definitions
  */
 export type {
-	GameState,
-	CursorOp,
+	AnchoredPath,
+	AutomergeUrl,
+	Client,
+	Color,
 	Face,
+	FocusOp,
 	GameManifest,
-	HashContext,
-	HexColor,
+	GameState,
+	HashProps,
+	JsonValue,
 	MoveOp,
 	Piece,
 	PieceTemplate,
 	PresenceState,
+	Prop,
 	PutOp,
 	Scenario,
 	Templates,
 	Vector3Tuple,
-} from "../plugins/src/index.js";
+} from "../react/src/index.js";
+export { SCHEMA_URL } from "../react/src/index.js";

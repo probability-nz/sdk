@@ -3,15 +3,15 @@
  * Probability SDK
  */
 export {
-	parseHashContext,
+	parseHashProps,
 	toColor,
+	getPeerName,
 	loadManifest,
 	objectIdToPath,
 	createGame,
-} from "../plugins/src/index.js";
-export {
 	ProbProvider,
 	type ProbProviderProps,
+	useHashProps,
 	useProbDocument,
 	usePresenceState,
-} from "../plugins/src/react/index.js";
+} from "../react/src/index.js";
