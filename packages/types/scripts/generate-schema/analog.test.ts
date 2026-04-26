@@ -80,9 +80,9 @@ describe("PresenceState", () => {
     expectValid(validatePresence, {});
   });
 
-  it("accepts cursor focus", () => {
+  it("accepts a focus op", () => {
     expectValid(validatePresence, {
-      cursor: { action: "focus", path: ["1@abc", "children", 0] },
+      op: { action: "focus", path: ["1@abc", "children", 0] },
     });
   });
 
@@ -212,19 +212,19 @@ describe("$schema field", () => {
 describe("AnchoredPath", () => {
   it("accepts string first element followed by string and number props", () => {
     expectValid(validatePresence, {
-      cursor: { action: "focus", path: ["1@abc", "children", 0, "position"] },
+      op: { action: "focus", path: ["1@abc", "children", 0, "position"] },
     });
   });
 
   it("rejects number as first element", () => {
     expect(validatePresence({
-      cursor: { action: "focus", path: [42, "children"] },
+      op: { action: "focus", path: [42, "children"] },
     })).toBe(false);
   });
 
   it("rejects boolean in path", () => {
     expect(validatePresence({
-      cursor: { action: "focus", path: ["1@abc", true] },
+      op: { action: "focus", path: ["1@abc", true] },
     })).toBe(false);
   });
 });

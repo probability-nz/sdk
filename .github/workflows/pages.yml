@@ -33,6 +33,9 @@ jobs:
 
       - run: pnpm build
 
+      # rehype-mermaid renders diagrams via headless Chromium at build time.
+      - run: pnpm exec playwright install --with-deps chromium
+
       - run: pnpm --filter @probability-nz/docs docs
 
       - name: Stage site

@@ -48,3 +48,11 @@ h1#_top {
 a[href="#_top"] {
     display: none;
 }
+
+/* Mermaid diagrams render with dark text on transparent — give them a light bg. */
+img[id^="mermaid-"] {
+    background: #fff;
+    padding: 1rem;
+    display: block;
+    max-width: 100%;
+}

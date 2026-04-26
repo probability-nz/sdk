@@ -33,16 +33,16 @@ describe("assertPresenceState", () => {
     assertPresenceState(schema, {});
   });
 
-  it("accepts a cursor focus op", () => {
+  it("accepts a focus op", () => {
     assertPresenceState(schema, {
-      cursor: { action: "focus", path: ["1@abc", "children", 0] },
+      op: { action: "focus", path: ["1@abc", "children", 0] },
     });
   });
 
   it("throws on malformed path", () => {
     expect(() => {
       assertPresenceState(schema, {
-        cursor: { action: "focus", path: [42, "children"] },
+        op: { action: "focus", path: [42, "children"] },
       });
     }).toThrow(/Validation failed/);
   });
