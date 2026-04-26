@@ -1,4 +1,6 @@
-# Plugins
+# @probability-nz/react
+
+React SDK for building [Probability](https://probability.nz) plugins.
 
 Plugins are web apps that can help with gameplay, act as an AI opponent, manage decks, enforce rules, etc.
 
@@ -13,7 +15,7 @@ They're launched with a special URL:
 }
 ```
 
-Once the app loads, `<ProbProvider>` connects to the sync server. `useProbDocument` handles the game state, and `useProbPresence` shows moves and changes.
+Once the app loads, `<ProbProvider>` connects to the sync server. `useProbDocument` handles the game state, and `usePresenceState` shows moves and changes.
 
 ```mermaid
 flowchart TD
@@ -47,7 +49,7 @@ flowchart TD
 
 ### Errors:
 
-1. **`parseHashContext()`**: invalid or missing URL hash
+1. **`parseHashProps()`**: invalid or missing URL hash
 2. **Automerge sync**: doc never loads (60s timeout). [WebSocket errors are silent.](https://github.com/automerge/automerge-repo/issues/208)
 3. **`changeDoc()`**: doc schema validation failed
 4. **`useProbDocument`**: document deleted by peer

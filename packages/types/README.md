@@ -4,7 +4,7 @@ TypeScript types and JSON Schema for Probability documents, presence, and hash-r
 
 ## Exports
 
-- `./` — TS types (`GameState`, `GameManifest`, `Piece`, `PresenceState`, `HashContext`, …) and the `SCHEMA_URL` constant.
+- `./` — TS types (`GameState`, `GameManifest`, `Piece`, `PresenceState`, `HashProps`, …) and the `SCHEMA_URL` constant.
 - `./analog.json` — JSON Schema 2020-12 for `GameState`, generated from the TS types.
 
 ## Build

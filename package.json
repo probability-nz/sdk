@@ -9,9 +9,9 @@
     "lint": "turbo lint",
     "test": "turbo test",
     "test:e2e": "pnpm --filter example-plugin test:e2e",
-    "fmt": "oxfmt --write packages/ plugins/",
-    "fmt:check": "oxfmt --check packages/ plugins/",
-    "clean": "rm -rf packages/*/dist plugins/*/dist node_modules/.cache .turbo"
+    "fmt": "oxfmt --write packages/ examples/",
+    "fmt:check": "oxfmt --check packages/ examples/",
+    "clean": "rm -rf packages/*/dist node_modules/.cache .turbo"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",

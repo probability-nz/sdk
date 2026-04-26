@@ -24,14 +24,14 @@ export type JsonValue =
  * Connection context passed to plugins via the URL hash
  * @group Core
  */
-export interface HashContext {
+export interface HashProps {
   /** Automerge document URL */
   doc: AutomergeUrl;
   /** Sync server WebSocket URLs */
   sync: [string, ...string[]];
   /**
    * @experimental Will be a base64url-encoded KeyHive/Beelay Ed25519
-   * `Signed<Delegation>`. Currently ignored — all values fail validation.
+   * `Signed<Delegation>`.
    */
   delegation?: string;
 }

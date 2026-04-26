@@ -1,8 +1,8 @@
 import typia from "typia";
-import type { HashContext } from "@probability-nz/types";
+import type { HashProps } from "@probability-nz/types";
 
-/** Un-branded shape for typia validation; HashContext's brand would be treated as a required property. */
-interface RawHashContext {
+/** Un-branded shape for typia validation; HashProps's brand would be treated as a required property. */
+interface RawHashProps {
   doc: `automerge:${string}`;
   sync: [string, ...string[]];
   delegation?: string;
@@ -14,15 +14,15 @@ interface RawHashContext {
  * @returns `undefined` if the hash is missing or unparseable.
  * @group Core
  */
-export const parseHashContext = (hash: string): HashContext | undefined => {
+export const parseHashProps = (hash: string): HashProps | undefined => {
   const raw = hash.slice(1);
   if (raw === "") {
     return undefined;
   }
   try {
-    const parsed = typia.assert<RawHashContext>(JSON.parse(decodeURIComponent(raw)));
+    const parsed = typia.assert<RawHashProps>(JSON.parse(decodeURIComponent(raw)));
     // eslint-disable-next-line typescript/no-unsafe-type-assertion
-    return parsed as unknown as HashContext;
+    return parsed as unknown as HashProps;
   } catch {
     return undefined;
   }

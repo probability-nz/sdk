@@ -1,7 +1,5 @@
+import type { Color } from "@probability-nz/types";
 import { fnv1a } from "./fnv1a";
-
-/** @group Presence */
-export type HexColor = `#${string}`;
 
 /**
  * @internal Convert HSL to hex.
@@ -9,7 +7,7 @@ export type HexColor = `#${string}`;
  * @param s - Saturation (0–100)
  * @param l - Lightness (0–100)
  */
-const hslToHex = (h: number, s: number, l: number): HexColor => {
+const hslToHex = (h: number, s: number, l: number): string => {
   const sn = s / 100;
   const ln = l / 100;
   const a = sn * Math.min(ln, 1 - ln);
@@ -21,7 +19,7 @@ const hslToHex = (h: number, s: number, l: number): HexColor => {
       .padStart(2, "0");
   };
   // Channel offsets: 0 = red, 8 = green, 4 = blue
-  return `#${f(0)}${f(8)}${f(4)}` as HexColor;
+  return `#${f(0)}${f(8)}${f(4)}`;
 };
 
 /**
@@ -32,7 +30,7 @@ const hslToHex = (h: number, s: number, l: number): HexColor => {
  * ```
  * @group Presence
  */
-export const toColor = (seed: string): HexColor => {
+export const toColor = (seed: string): Color => {
   const hash = fnv1a(seed);
   const hue = hash % 360;
   return hslToHex(hue, 65, 50);

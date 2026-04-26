@@ -1,11 +1,13 @@
 /** @packageDocumentation Shared utilities, types, and pure functions for Probability plugins. */
-export { parseHashContext } from "./parseHashContext";
+export { parseHashProps } from "./parseHashProps";
 export type {
   GameState,
-  CursorOp,
+  FocusOp,
   Face,
   GameManifest,
-  HashContext,
+  Client,
+  Color,
+  HashProps,
   MoveOp,
   Piece,
   PieceTemplate,
@@ -15,7 +17,7 @@ export type {
   Templates,
   Vector3Tuple,
 } from "@probability-nz/types";
-export { toColor, type HexColor } from "./toColor";
+export { toColor } from "./toColor";
 export { getPeerName } from "./peerName";
 export { loadManifest } from "./manifest";
 export { buildGameState } from "./buildGameState";

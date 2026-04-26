@@ -1,7 +1,20 @@
 import type { Prop } from "@automerge/automerge";
 /** Automerge property index (string key or array index) */
 export type { Prop };
+import type { Vector3Tuple } from "./doc";
 import type { JsonValue } from "./hashroute";
+
+/**
+ * Any valid CSS color string (e.g. `"red"`, `"#abc"`, `"rgb(0,0,0)"`).
+ * @group Presence
+ */
+export type Color = string;
+
+/**
+ * Free-form client identifier, intended as `name@version` (e.g. `"my-plugin@1.0.0"`).
+ * @group Presence
+ */
+export type Client = string;
 
 /**
  * A path anchored to a specific Automerge object.
@@ -14,7 +27,7 @@ export type AnchoredPath = [string, ...Prop[]];
  * Cursor focus (what the user is looking at) — no automerge equivalent
  * @group Presence
  */
-export interface CursorOp {
+export interface FocusOp {
   action: "focus";
   path: AnchoredPath;
 }
@@ -45,6 +58,12 @@ export interface MoveOp {
  * @group Presence
  */
 export interface PresenceState {
-  cursor?: CursorOp;
-  op?: PutOp | MoveOp;
+  color?: Color;
+  client?: Client;
+  op?: PutOp | MoveOp | FocusOp;
+  /** @deprecated Old presence format; use `op` instead. */
+  cursors?: Record<
+    string,
+    { position?: Vector3Tuple; rotation?: Vector3Tuple }
+  >;
 }

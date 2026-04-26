@@ -1,4 +1,5 @@
-export const SCHEMA_URL = "https://registry.probability.nz/npm/@probability-nz/types/-/types-0.0.0.tgz/dist/analog.json";
+export const SCHEMA_URL =
+  "https://registry.probability.nz/npm/@probability-nz/types/-/types-0.0.0.tgz/dist/analog.json";
 
 /**
  * `[x, y, z]` — right-handed Y-up coordinate system (from Three.js).
@@ -47,7 +48,10 @@ export interface PieceTemplate {
    * @default "#808080"
    */
   color?: string | null;
-  /** @default false */
+  /**
+   * Make piece non-interactive?
+   * @default false
+   */
   locked?: boolean;
   /** Named face orientations (e.g. for dice) */
   faces?: Face[];
