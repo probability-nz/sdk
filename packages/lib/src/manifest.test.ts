@@ -79,15 +79,15 @@ describe("loadManifest", () => {
     });
 
     it("resolves relative src URLs in templates", () => {
-      expect(ctx.result.templates["pawn"]!.src).toBe(`${PLUGIN_URL}dist/models/pawn.glb`);
+      expect(ctx.result.templates.pawn!.src).toBe(`${PLUGIN_URL}dist/models/pawn.glb`);
     });
 
     it("leaves templates without src unchanged", () => {
-      expect(ctx.result.templates["king"]!.src).toBeUndefined();
+      expect(ctx.result.templates.king!.src).toBeUndefined();
     });
 
     it("preserves non-src fields on templates", () => {
-      expect(ctx.result.templates["pawn"]!.name).toBe("Pawn");
+      expect(ctx.result.templates.pawn!.name).toBe("Pawn");
     });
 
     it("resolves relative src URLs in scenario children", () => {

@@ -9,11 +9,9 @@ interface AnalogSchema {
   $id: string;
 }
 
-function readJson<T>(path: string): T {
-  return JSON.parse(readFileSync(path, "utf8")) as T;
-}
-
-const schema = readJson<AnalogSchema>(resolve(import.meta.dirname, "../../dist/analog.json"));
+const schema = JSON.parse(
+  readFileSync(resolve(import.meta.dirname, "../../dist/analog.json"), "utf8"),
+) as AnalogSchema;
 
 // Compile the full schema (meta-validates it as valid 2020-12).
 // `strictTuples: false` permits head-rest tuples (AnchoredPath = [string, ...Prop[]]);

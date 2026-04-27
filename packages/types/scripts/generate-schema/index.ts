@@ -55,7 +55,7 @@ function fixNode(node: unknown): unknown {
     });
 
   // Typia emits prefixItems without minItems — add it so tuples enforce length
-  const prefix = node["prefixItems"];
+  const prefix = node.prefixItems;
   const needsMinItems = Array.isArray(prefix) && !("minItems" in node);
 
   return Object.fromEntries(
@@ -67,8 +67,8 @@ const typiaSchema = fixNode(typiaOutput);
 
 if (
   !isObject(typiaSchema) ||
-  !isObject(typiaSchema["components"]) ||
-  !isObject(typiaSchema["components"]["schemas"])
+  !isObject(typiaSchema.components) ||
+  !isObject(typiaSchema.components.schemas)
 ) {
   throw new Error("Unexpected Typia output shape");
 }
@@ -83,7 +83,7 @@ writeFileSync(
       title: "Analog",
       description: "Schema for Probability Automerge documents and presence",
       $ref: "#/$defs/GameState",
-      $defs: typiaSchema["components"]["schemas"],
+      $defs: typiaSchema.components.schemas,
     },
     null,
     2,
