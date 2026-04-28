@@ -11,7 +11,8 @@ import type { JsonValue } from "./hashroute";
 export type Color = string;
 
 /**
- * Free-form client identifier, intended as `name@version` (e.g. `"my-plugin@1.0.0"`).
+ * Client identifier in npm format: `name@version` or `name#commit`
+ * (e.g. `"my-plugin@1.0.0"`, `"@garbo-succus/probability-nz#c0mM1t"`).
  * @group Presence
  */
 export type Client = string;
