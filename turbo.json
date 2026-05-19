@@ -3,7 +3,10 @@
   "tasks": {
     "dev": { "cache": false, "persistent": true },
     "build": { "dependsOn": ["^build"], "outputs": ["dist/**"] },
-    "lint": { "inputs": ["src/**", "tsconfig.json", "../../.oxlintrc.json", "../../tsconfig.base.json"] },
+    "lint": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**", "tsconfig.json", "../../.oxlintrc.json", "../../tsconfig.base.json"]
+    },
     "test": { "cache": false }
   }
 }
