@@ -8,6 +8,14 @@ export const SCHEMA_URL =
 export type Vector3Tuple = [x: number, y: number, z: number];
 
 /**
+ * `[x, y, z]` position in meters, relative to parent.
+ * Pass `null` for `y` to rest on the parent's surface.
+ * @experimental Null `y` may change.
+ * @group Advanced
+ */
+export type PositionTuple = [x: number, y: number | null, z: number];
+
+/**
  * A named orientation of a piece (e.g. die face)
  * @group Core
  */
@@ -32,7 +40,7 @@ export interface PieceTemplate {
    * World position in meters.
    * @default [0, 0, 0]
    */
-  position?: Vector3Tuple;
+  position?: PositionTuple;
   /**
    * Unitless multiplier applied to the model.
    * @default [1, 1, 1]

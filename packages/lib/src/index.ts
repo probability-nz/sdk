@@ -15,6 +15,7 @@ export type {
   MoveOp,
   Piece,
   PieceTemplate,
+  PositionTuple,
   PresenceState,
   Prop,
   PutOp,

@@ -4,6 +4,7 @@ export type {
   GameState,
   Piece,
   PieceTemplate,
+  PositionTuple,
   Scenario,
   Templates,
   Vector3Tuple,

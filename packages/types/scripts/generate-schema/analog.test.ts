@@ -131,6 +131,38 @@ describe("Vector3Tuple", () => {
   });
 });
 
+describe("PositionTuple", () => {
+  it("accepts null y on position", () => {
+    expectValid(validateState, {
+      $schema, templates: {}, children: [{ position: [1, null, 3] }],
+    });
+  });
+
+  it("rejects null x on position", () => {
+    expect(validateState({
+      $schema, templates: {}, children: [{ position: [null, 2, 3] }],
+    })).toBe(false);
+  });
+
+  it("rejects null z on position", () => {
+    expect(validateState({
+      $schema, templates: {}, children: [{ position: [1, 2, null] }],
+    })).toBe(false);
+  });
+
+  it("rejects null y on rotation", () => {
+    expect(validateState({
+      $schema, templates: {}, children: [{ rotation: [0, null, 0] }],
+    })).toBe(false);
+  });
+
+  it("rejects null y on scale", () => {
+    expect(validateState({
+      $schema, templates: {}, children: [{ scale: [1, null, 1] }],
+    })).toBe(false);
+  });
+});
+
 describe("Piece", () => {
   it("accepts color as string", () => {
     expectValid(validateState, {
