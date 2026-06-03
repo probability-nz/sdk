@@ -3,7 +3,7 @@ title: Sideloading
 description: Load a game template directly from a URL.
 ---
 
-This page describes how to load a game template directly from a URL.
+You can load any game template directly from a URL (bypassing the Probability catalog).
 
 ## Loading a game
 
@@ -11,27 +11,35 @@ You need a `template` URL to start a new game, or a `doc` URL to join an existin
 
 ## Start a new game from a template
 
+The `template` is a public folder of assets, i.e. an unzipped template zip. 
+
 ```
 https://prob.nz/play#template=<url>
 ```
 
 [Chess example](https://prob.nz/play#template=https://raw.githubusercontent.com/garbo-succus/chess/main/) ([source code](https://github.com/garbo-succus/chess))
 
+It must have CORS headers for `*` (or `prob.nz`) to work properly.
+
+
 ## Join an existing game
+
+The `doc` URL is generated when you start a game from a template. The ID is an Automerge [doc](https://automerge.org/docs/reference/concepts/).
 
 ```
 https://prob.nz/play#doc=<id>
 ```
 
-This URL is generated when you start a game from a template. The ID is an Automerge [doc](https://automerge.org/docs/reference/concepts/).
+If `doc` is set, `template` is ignored.
+
 
 ## Custom sync servers
 
-Sync servers facilitate connections between players.
+Sync servers facilitate connections between players, and are specified by the `sync` param.
 
 ```
 https://prob.nz/play#template=<url>&sync=wss://sync.automerge.org&sync=wss://sync.probability.nz
 https://prob.nz/play#doc=<id>&sync=wss://sync.probability.nz
 ```
 
-You can [host your own](https://github.com/automerge/automerge-repo-sync-server), in case sync.probability.nz is unavailable.
+You can [self-host](https://github.com/automerge/automerge-repo-sync-server), in case sync.probability.nz is unavailable.
