@@ -30,6 +30,7 @@ export default defineConfig({
 			sidebar: [
 				{ slug: "index" },
 				{ slug: "platform" },
+				{ slug: "sideloading" },
 				{
 					label: "Reference",
 					items: [

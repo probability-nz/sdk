@@ -1,0 +1,39 @@
+---
+title: Sideloading
+description: Load a game template directly from a URL.
+---
+
+[Probability](https://probability.nz) is a place to play & share tabletop & board games.
+
+This page describes how to load a game template directly from a URL.
+
+## Loading a game
+
+You need a `template` URL to start a new game, or a `doc` URL to join an existing game.
+
+## Start a new game from a template
+
+```
+https://prob.nz/play#template=<url>
+```
+
+[Chess example](https://prob.nz/play#template=https://raw.githubusercontent.com/garbo-succus/chess/main/) ([source code](https://github.com/garbo-succus/chess))
+
+## Join an existing game
+
+```
+https://prob.nz/play#doc=<id>
+```
+
+This URL is generated when you start a game from a template. The ID is an Automerge [doc](https://automerge.org/docs/reference/concepts/).
+
+## Custom sync servers
+
+Sync servers facilitate connections between players.
+
+```
+https://prob.nz/play#template=<url>&sync=wss://sync.automerge.org&sync=wss://sync.probability.nz
+https://prob.nz/play#doc=<id>&sync=wss://sync.probability.nz
+```
+
+You can [host your own](https://github.com/automerge/automerge-repo-sync-server), in case sync.probability.nz is unavailable.
