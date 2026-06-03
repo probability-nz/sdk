@@ -29,7 +29,7 @@ const resolveSrc = <T extends { src?: string; children?: T[] }>(node: T, base: s
  * @throws On network errors, missing `main` field, or schema validation failure.
  * @example
  * ```ts
- * const manifest = await loadManifest('https://registry.probability.nz/games/chess/');
+ * const manifest = await loadManifest('https://registry.probabilityusercontent.nz/games/chess/');
  * ```
  * @see {@link buildGameState} for the next step after loading.
  * @group Advanced

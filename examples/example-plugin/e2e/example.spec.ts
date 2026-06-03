@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 const SYNC = "wss://sync.probability.nz";
-const TEMPLATE = "https://registry.probability.nz/mod.io/8312-5127139/-/mod-7v1w.zip/";
+const TEMPLATE = "https://registry.probabilityusercontent.nz/mod.io/8312-5127139/-/mod-7v1w.zip/";
 
 // eslint-disable-next-line no-warning-comments
 // TODO: Create the doc directly in the test (via @automerge/automerge-repo against the sync server) to remove the prob.nz dependency and the 8s wait.

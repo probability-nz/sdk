@@ -1,5 +1,5 @@
 export const SCHEMA_URL =
-  "https://registry.probability.nz/npm/@probability-nz/types/-/types-0.0.0.tgz/dist/analog.json";
+  "https://registry.probabilityusercontent.nz/npm/@probability-nz/types/-/types-0.0.0.tgz/dist/analog.json";
 
 /**
  * `[x, y, z]` — right-handed Y-up coordinate system (from Three.js).
@@ -80,7 +80,7 @@ export interface Piece extends PieceTemplate {
  * @example
  * ```jsonc
  * {
- *   "$schema": "https://registry.probability.nz/npm/@probability-nz/types/-/types-0.0.0.tgz/dist/analog.json",
+ *   "$schema": "https://registry.probabilityusercontent.nz/npm/@probability-nz/types/-/types-0.0.0.tgz/dist/analog.json",
  *   "templates": {
  *     "defaults": { "scale": [0.1, 0.1, 0.1] },
  *     "redToken": { "template": "defaults", "name": "Red token", "src": "redToken.glb" }
@@ -112,7 +112,7 @@ export interface Scenario {
  * ```jsonc
  * // 2-4 and 4-8 player scenarios
  * {
- *   "$schema": "https://registry.probability.nz/npm/@probability-nz/types/-/types-0.0.0.tgz/dist/analog.json",
+ *   "$schema": "https://registry.probabilityusercontent.nz/npm/@probability-nz/types/-/types-0.0.0.tgz/dist/analog.json",
  *   "templates": { "token": { "src": "token.glb" } },
  *   "scenarios": [
  *     {
@@ -169,7 +169,7 @@ type __AutomergeMoves = Record<string, string>;
  * ```jsonc
  * // A token, sitting on a card, sitting on a chessboard
  * {
- *   "$schema": "https://registry.probability.nz/npm/@probability-nz/types/-/types-0.0.0.tgz/dist/analog.json",
+ *   "$schema": "https://registry.probabilityusercontent.nz/npm/@probability-nz/types/-/types-0.0.0.tgz/dist/analog.json",
  *   "templates": {},
  *   "children": [
  *     {
