@@ -80,27 +80,36 @@ describe("PresenceState", () => {
 
   it("accepts a focus op", () => {
     expectValid(validatePresence, {
-      op: { action: "focus", path: ["1@abc", "children", 0] },
+      ops: [{ action: "focus", path: ["1@abc", "children", 0] }],
     });
   });
 
   it("accepts a put op", () => {
     expectValid(validatePresence, {
-      op: {
+      ops: [{
         action: "put",
         path: ["1@abc", "position"],
         value: [1, 2, 3],
-      },
+      }],
     });
   });
 
   it("accepts a move op", () => {
     expectValid(validatePresence, {
-      op: {
+      ops: [{
         action: "move",
         path: ["1@abc", "children", 0],
         to: ["2@def", "children", 1],
-      },
+      }],
+    });
+  });
+
+  it("accepts multiple ops", () => {
+    expectValid(validatePresence, {
+      ops: [
+        { action: "focus", path: ["1@abc", "children", 0] },
+        { action: "focus", path: ["1@abc", "children", 1] },
+      ],
     });
   });
 });
@@ -242,19 +251,19 @@ describe("$schema field", () => {
 describe("AnchoredPath", () => {
   it("accepts string first element followed by string and number props", () => {
     expectValid(validatePresence, {
-      op: { action: "focus", path: ["1@abc", "children", 0, "position"] },
+      ops: [{ action: "focus", path: ["1@abc", "children", 0, "position"] }],
     });
   });
 
   it("rejects number as first element", () => {
     expect(validatePresence({
-      op: { action: "focus", path: [42, "children"] },
+      ops: [{ action: "focus", path: [42, "children"] }],
     })).toBe(false);
   });
 
   it("rejects boolean in path", () => {
     expect(validatePresence({
-      op: { action: "focus", path: ["1@abc", true] },
+      ops: [{ action: "focus", path: ["1@abc", true] }],
     })).toBe(false);
   });
 });

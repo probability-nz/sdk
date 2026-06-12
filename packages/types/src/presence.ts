@@ -55,14 +55,21 @@ export interface MoveOp {
 }
 
 /**
+ * A presence operation
+ * @group Presence
+ */
+export type Op = PutOp | MoveOp | FocusOp;
+
+/**
  * Presence state broadcast between peers
  * @group Presence
  */
 export interface PresenceState {
   color?: Color;
   client?: Client;
-  op?: PutOp | MoveOp | FocusOp;
-  /** @deprecated Old presence format; use `op` instead. */
+  /** Concurrent operations (e.g. one focus per selected piece) */
+  ops?: Op[];
+  /** @deprecated Old presence format; use `ops` instead. */
   cursors?: Record<
     string,
     { position?: Vector3Tuple; rotation?: Vector3Tuple }

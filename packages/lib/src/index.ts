@@ -13,6 +13,7 @@ export type {
   HashProps,
   JsonValue,
   MoveOp,
+  Op,
   Piece,
   PieceTemplate,
   PositionTuple,

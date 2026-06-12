@@ -17,6 +17,7 @@ export type {
   Color,
   FocusOp,
   MoveOp,
+  Op,
   PresenceState,
   Prop,
   PutOp,
