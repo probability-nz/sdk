@@ -1,4 +1,4 @@
-import Ajv2020 from "ajv/dist/2020";
+import Ajv2020 from "ajv/dist/2020.js";
 import type { GameState, PresenceState } from "@probability-nz/types";
 
 interface JsonSchema {

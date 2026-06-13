@@ -8,9 +8,9 @@ export type {
   Scenario,
   Templates,
   Vector3Tuple,
-} from "./doc";
-export { SCHEMA_URL } from "./doc";
-export type { AutomergeUrl, HashProps, JsonValue } from "./hashroute";
+} from "./doc.js";
+export { SCHEMA_URL } from "./doc.js";
+export type { AutomergeUrl, HashProps, JsonValue } from "./hashroute.js";
 export type {
   AnchoredPath,
   Client,
@@ -21,4 +21,4 @@ export type {
   PresenceState,
   Prop,
   PutOp,
-} from "./presence";
+} from "./presence.js";

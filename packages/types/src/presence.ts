@@ -1,8 +1,8 @@
 import type { Prop } from "@automerge/automerge";
 /** Automerge property index (string key or array index) */
 export type { Prop };
-import type { Vector3Tuple } from "./doc";
-import type { JsonValue } from "./hashroute";
+import type { Vector3Tuple } from "./doc.js";
+import type { JsonValue } from "./hashroute.js";
 
 /**
  * Any valid CSS color string (e.g. `"red"`, `"#abc"`, `"rgb(0,0,0)"`).
