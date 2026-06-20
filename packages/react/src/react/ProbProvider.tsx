@@ -1,8 +1,9 @@
 import { type ReactNode, useContext, useEffect, useRef, useState } from "react";
 import { Repo, RepoContext, WebSocketClientAdapter } from "@automerge/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import type { ImportMetaWithEnv } from "./schemaValidation";
 
-declare const process: { env: { NODE_ENV?: string } };
+declare const process: { env?: { NODE_ENV?: string } } | undefined;
 
 /** @group Core */
 export interface ProbProviderProps {
@@ -18,7 +19,15 @@ export interface ProbProviderProps {
 export function ProbProvider({ sync = [], children }: ProbProviderProps) {
   // Warn on nesting (always call hook to satisfy rules of hooks)
   const parent = useContext(RepoContext);
-  if (process.env.NODE_ENV !== "production" && parent) {
+  if (
+    (
+      (import.meta as ImportMetaWithEnv).env?.DEV ??
+      ((import.meta as ImportMetaWithEnv).env?.PROD === true
+        ? false
+        : typeof process === "undefined" || process.env?.NODE_ENV !== "production")
+    ) &&
+    parent
+  ) {
     console.warn("Nested <ProbProvider> detected. This creates a separate Repo instance.");
   }
 

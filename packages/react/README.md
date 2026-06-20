@@ -6,6 +6,8 @@ A plugin is launched via a URL hash carrying a `HashProps` object. Once mounted,
 
 A working example lives at [`examples/example-plugin`](https://github.com/probability-nz/sdk/tree/main/examples/example-plugin) — see its [README](https://github.com/probability-nz/sdk/tree/main/examples/example-plugin#readme) for run/launch instructions.
 
+Document and presence updates are schema-validated in development builds. Production builds skip that hot-path validation.
+
 ```mermaid
 flowchart TD
     subgraph prob ["Probability app"]

@@ -3,9 +3,20 @@ import { type AnyDocumentId, useDocument as useAutomergeDocument } from "@autome
 import { useCallback } from "react";
 import { assertGameState } from "@probability-nz/lib";
 import { SCHEMA_URL } from "@probability-nz/types";
+import type { ImportMetaWithEnv } from "./schemaValidation";
 import { useSchema } from "./useSchema";
 
+declare const process: { env?: { NODE_ENV?: string } } | undefined;
+
 type ChangeDocFn<T> = (changeFn: ChangeFn<T>, options?: ChangeOptions<T>) => void;
+const useValidationSchema = (
+  (import.meta as ImportMetaWithEnv).env?.DEV ??
+  ((import.meta as ImportMetaWithEnv).env?.PROD === true
+    ? false
+    : typeof process === "undefined" || process.env?.NODE_ENV !== "production")
+)
+  ? useSchema
+  : () => undefined;
 
 /**
  * Schema-validated access to the shared game document.
@@ -20,14 +31,21 @@ export function useProbDocument<T extends { $schema: string }>(
   if (!doc.$schema) {
     console.warn(`Document ${String(id)} has no $schema; defaulting to ${SCHEMA_URL}`);
   }
-  const schema = useSchema(doc.$schema ?? SCHEMA_URL);
+  const schema = useValidationSchema(doc.$schema ?? SCHEMA_URL);
 
   // Validate schema before updating
   const changeDoc = useCallback(
     (fn: ChangeFn<T>, options?: ChangeOptions<T>) => {
       rawChangeDoc((d) => {
         fn(d);
-        assertGameState(schema, d);
+        if (
+          (import.meta as ImportMetaWithEnv).env?.DEV ??
+          ((import.meta as ImportMetaWithEnv).env?.PROD === true
+            ? false
+            : typeof process === "undefined" || process.env?.NODE_ENV !== "production")
+        ) {
+          assertGameState(schema!, d);
+        }
       }, options);
     },
     [rawChangeDoc, schema],
