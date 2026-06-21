@@ -1,11 +1,5 @@
-import { afterEach, describe, expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { resolveSchemaValidationEnvironment } from "./schemaValidation";
-
-const originalNodeEnv = process.env.NODE_ENV;
-
-afterEach(() => {
-  process.env.NODE_ENV = originalNodeEnv;
-});
 
 describe("schema validation mode", () => {
   it("enables development mode outside production", () => {
