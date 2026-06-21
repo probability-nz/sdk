@@ -7,6 +7,7 @@ import { describe, expect, it } from "vitest";
 interface AnalogSchema {
   $schema: string;
   $id: string;
+  $defs: Record<string, { properties?: Record<string, unknown> }>;
 }
 
 const schema = JSON.parse(
@@ -173,22 +174,8 @@ describe("PositionTuple", () => {
 });
 
 describe("Piece", () => {
-  it("accepts color as string", () => {
-    expectValid(validateState, {
-      $schema, templates: {}, children: [{ color: "#ff0000" }],
-    });
-  });
-
-  it("accepts color as null", () => {
-    expectValid(validateState, {
-      $schema, templates: {}, children: [{ color: null }],
-    });
-  });
-
-  it("rejects color as number", () => {
-    expect(validateState({
-      $schema, templates: {}, children: [{ color: 42 }],
-    })).toBe(false);
+  it("omits deprecated color prop from PieceTemplate schema", () => {
+    expect(schema.$defs.PieceTemplate.properties).not.toHaveProperty("color");
   });
 
   it("accepts faces array", () => {

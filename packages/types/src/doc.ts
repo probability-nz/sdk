@@ -52,11 +52,6 @@ export interface PieceTemplate {
    */
   rotation?: Vector3Tuple;
   /**
-   * CSS color string, or null for no tint
-   * @default "#808080"
-   */
-  color?: string | null;
-  /**
    * Make piece non-interactive?
    * @default false
    */
