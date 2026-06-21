@@ -171,11 +171,29 @@ describe("PositionTuple", () => {
       $schema, templates: {}, children: [{ scale: [1, null, 1] }],
     })).toBe(false);
   });
+
+  it("rejects null y on size", () => {
+    expect(validateState({
+      $schema, templates: {}, children: [{ size: [1, null, 1] }],
+    })).toBe(false);
+  });
 });
 
 describe("Piece", () => {
   it("omits deprecated color prop from PieceTemplate schema", () => {
     expect(schema.$defs.PieceTemplate.properties).not.toHaveProperty("color");
+  });
+
+  it("accepts experimental size prop", () => {
+    expectValid(validateState, {
+      $schema, templates: {}, children: [{ size: [1, 2, 3] }],
+    });
+  });
+
+  it("keeps deprecated scale prop valid", () => {
+    expectValid(validateState, {
+      $schema, templates: {}, children: [{ scale: [1, 2, 3] }],
+    });
   });
 
   it("accepts faces array", () => {

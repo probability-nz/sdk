@@ -44,8 +44,15 @@ export interface PieceTemplate {
   /**
    * Unitless multiplier applied to the model.
    * @default [1, 1, 1]
+   * @deprecated Use `size` instead.
    */
   scale?: Vector3Tuple;
+  /**
+   * Unitless size multiplier applied to the model.
+   * @default [1, 1, 1]
+   * @experimental Replaces `scale`; name and semantics may still change.
+   */
+  size?: Vector3Tuple;
   /**
    * Euler rotation (degrees)
    * @default [0, 0, 0]
@@ -77,7 +84,7 @@ export interface Piece extends PieceTemplate {
  * {
  *   "$schema": "https://registry.probabilityusercontent.nz/npm/@probability-nz/types/-/types-0.0.0.tgz/dist/analog.json",
  *   "templates": {
- *     "defaults": { "scale": [0.1, 0.1, 0.1] },
+ *     "defaults": { "size": [0.1, 0.1, 0.1] },
  *     "redToken": { "template": "defaults", "name": "Red token", "src": "redToken.glb" }
  *   },
  *   "children": [
